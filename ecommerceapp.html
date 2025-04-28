@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Artiyum Store</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo">
+      <h1>Artiyum</h1>
+    </div>
+    <div class="cart-icon">
+      <button id="cart-btn">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <h2 class="sub-heading">Our Products</h2>
+    <div class="products-container">
+      
+      <!-- Example Product -->
+      <div class="product">
+        <img src="asset/adrianna-geo-1rBg5YSi00c-unsplash.jpg" alt="War Zone">
+        <h3>War Zone</h3>
+        <p class="price">754</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="asset/birmingham-museums-trust-sJr8LDyEf7k-unsplash.jpg" alt="Castle">
+        <h3>Castle</h3>
+        <p class="price">867</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="asset/boston-public-library-YoK5pBcSY8s-unsplash.jpg" alt="Birds">
+        <h3>Birds</h3>
+        <p class="price">375</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="asset/europeana-VsnDYMWollM-unsplash.jpg" alt="Lonely Girl">
+        <h3>Lonely Girl</h3>
+        <p class="price">450</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="asset/mcgill-library-y4PqRPqSako-unsplash.jpg" alt="Birds">
+        <h3>Birds</h3>
+        <p class="price">900</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="asset/steve-johnson-7lAz-CrlED0-unsplash.jpg" alt="Wall Art">
+        <h3>Wall Art</h3>
+        <p class="price">1200</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="asset/swapnil-dwivedi-w46tRF64qNc-unsplash.jpg" alt="Pot">
+        <h3>Pot</h3>
+        <p class="price">650</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="asset/tamara-menzi-n-vnWQmmVoY-unsplash.jpg" alt="Nature">
+        <h3>Nature</h3>
+        <p class="price">600</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="asset/europeana-YIfFVwDcgu8-unsplash.jpg" alt="Flower">
+        <h3>Flower</h3>
+        <p class="price">300</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    const cart = [];
+
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        const productCard = e.target.parentElement;
+        const productName = productCard.querySelector('h3').innerText;
+        const productPrice = parseInt(productCard.querySelector('.price').innerText);
+
+        cart.push({ name: productName, price: productPrice });
+
+        alert(`${productName} added to your cart!`);
+      });
+    });
+
+    document.getElementById('cart-btn').addEventListener('click', () => {
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+      } else {
+        let cartSummary = 'Items in your cart:\n\n';
+        let total = 0;
+        cart.forEach((item, index) => {
+          cartSummary += `${index + 1}. ${item.name} - ₹${item.price}\n`;
+          total += item.price;
+        });
+        cartSummary += `\nTotal: ₹${total}`;
+        alert(cartSummary);
+      }
+    });
+  </script>
+
+</body>
+</html>
